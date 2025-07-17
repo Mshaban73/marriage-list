@@ -1,5 +1,6 @@
 {
   "name": "Marriage Movables List Generator",
-  "description": "An application to create, manage, and format a marriage movables list. Features offline number-to-text conversion (Tafqeet) and local storage to save and load multiple lists.",
-  "requestFramePermissions": []
+  "description": "An application to create, manage, and format a marriage movables list, including automatic calculation of the total value and conversion to Arabic text (Tafqeet) using Gemini.",
+  "requestFramePermissions": [],
+  "prompt": ""
 }
