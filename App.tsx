@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Item } from './types';
-import { getTafqeet } from './services/geminiService';
-import { PlusCircleIcon, MinusCircleIcon, SpinnerIcon, SaveIcon, PrinterIcon, FolderOpenIcon, TrashIcon } from './components/icons';
+import { tafqeet } from './tafqeetUtil';
+import { PlusCircleIcon, MinusCircleIcon, SaveIcon, PrinterIcon, FolderOpenIcon, TrashIcon } from './components/icons';
 
 interface ListData {
   groomName: string;
@@ -37,8 +37,7 @@ const App: React.FC = () => {
 
   const [items, setItems] = useState<Item[]>([]);
 
-  const [tafqeetText, setTafqeetText] = useState<string>('');
-  const [isTafqeetLoading, setIsTafqeetLoading] = useState<boolean>(false);
+  const [tafqeetText, setTafqeetText] = useState<string>('فقط لا غير');
 
   const [savedLists, setSavedLists] = useState<SavedList[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -133,27 +132,13 @@ const App: React.FC = () => {
     setItems(prevItems => prevItems.filter(item => item.id !== id));
   };
   
-  const updateTafqeet = useCallback(async () => {
-      if (totalValue > 0) {
-          setIsTafqeetLoading(true);
-          const text = await getTafqeet(totalValue);
-          setTafqeetText(text);
-          setIsTafqeetLoading(false);
-      } else {
-          setTafqeetText('فقط لا غير');
-      }
-  }, [totalValue]);
-
-
   useEffect(() => {
-    const handler = setTimeout(() => {
-      updateTafqeet();
-    }, 1000); 
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [totalValue, updateTafqeet]);
+    if (totalValue > 0) {
+      setTafqeetText(tafqeet(totalValue));
+    } else {
+      setTafqeetText('فقط لا غير');
+    }
+  }, [totalValue]);
 
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8 print:p-0">
@@ -256,11 +241,7 @@ const App: React.FC = () => {
             </div>
             <div className="text-center p-4 border-2 border-dashed rounded-lg">
                 <p className="font-bold text-lg text-gray-800">
-                    {isTafqeetLoading ? (
-                        <span className="flex items-center justify-center text-gray-500"><SpinnerIcon className="w-6 h-6 mr-2" />جاري التحويل...</span>
-                    ) : (
-                        tafqeetText
-                    )}
+                    {tafqeetText}
                 </p>
             </div>
           </div>
