@@ -1,3 +1,5 @@
+--- START OF FILE App.tsx ---
+
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Item } from './types';
 import { tafqeet } from './tafqeetUtil';
@@ -171,12 +173,12 @@ const App: React.FC = () => {
         )}
 
         <section className="mb-8 text-base leading-relaxed text-gray-700">
-            أقر أنا / <input type="text" value={groomName} onChange={e => setGroomName(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-black"/> 
-            الموقع أدناه وأحمل رقم قومي <input type="text" value={groomId} onChange={e => setGroomId(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-black"/>
-            والمقيم في <input type="text" value={groomAddress} onChange={e => setGroomAddress(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 w-full sm:w-auto print:border-black"/>
-            أنني قد عاينت وتسلمت جميع المنقولات الخاصة بالآنسة / <input type="text" value={brideName} onChange={e => setBrideName(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-black"/>
-            والتي تحمل رقم قومي <input type="text" value={brideId} onChange={e => setBrideId(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-black"/>
-            والمقيمة في <input type="text" value={brideAddress} onChange={e => setBrideAddress(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 w-full sm:w-auto print:border-black"/>
+            أقر أنا / <input type="text" value={groomName} onChange={e => setGroomName(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-solid print:border-black print:px-0"/> 
+            الموقع أدناه وأحمل رقم قومي <input type="text" value={groomId} onChange={e => setGroomId(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-solid print:border-black print:px-0"/>
+            والمقيم في <input type="text" value={groomAddress} onChange={e => setGroomAddress(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 w-full sm:w-auto print:border-solid print:border-black print:px-0"/>
+            أنني قد عاينت وتسلمت جميع المنقولات الخاصة بالآنسة / <input type="text" value={brideName} onChange={e => setBrideName(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-solid print:border-black print:px-0"/>
+            والتي تحمل رقم قومي <input type="text" value={brideId} onChange={e => setBrideId(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 print:border-solid print:border-black print:px-0"/>
+            والمقيمة في <input type="text" value={brideAddress} onChange={e => setBrideAddress(e.target.value)} className="font-bold border-b-2 border-dotted px-2 mx-1 w-full sm:w-auto print:border-solid print:border-black print:px-0"/>
             وأصبحت مسئولًا عنها من تاريخ توقيعي على هذه القائمة.
         </section>
 
@@ -184,7 +186,7 @@ const App: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-right border-collapse">
               <thead>
-                <tr className="bg-gray-800 text-white">
+                <tr className="bg-gray-800 text-white print:bg-white print:text-black print:border-b-2 print:border-black">
                   <th className="p-3 w-16 text-center">م</th>
                   <th className="p-3">البيان</th>
                   <th className="p-3 w-40 text-left">القيمة (جنيه)</th>
@@ -193,13 +195,13 @@ const App: React.FC = () => {
               </thead>
               <tbody>
                 {items.map((item, index) => (
-                  <tr key={item.id} className="border-b hover:bg-gray-50">
+                  <tr key={item.id} className="border-b hover:bg-gray-50 print:border-gray-300">
                     <td className="p-2 text-center align-top pt-4">{index + 1}</td>
                     <td className="p-2 align-top">
                       <textarea
                         value={item.description}
                         onChange={(e) => handleItemChange(item.id, 'description', e.target.value)}
-                        className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 transition print:border-none print:p-0 print:bg-transparent"
+                        className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 transition print:border-none print:p-0 print:bg-transparent print:resize-none"
                         rows={2}
                         placeholder="اكتب وصف البند هنا..."
                       />
@@ -259,13 +261,13 @@ const App: React.FC = () => {
                   type="text" 
                   value={groomName} 
                   onChange={e => setGroomName(e.target.value)} 
-                  className="flex-grow p-1 bg-transparent font-bold border-b-2 border-gray-400 border-dotted focus:outline-none focus:border-solid focus:border-blue-500 transition print:bg-transparent"
+                  className="flex-grow p-1 bg-transparent font-bold border-b-2 border-gray-400 border-dotted focus:outline-none focus:border-solid focus:border-blue-500 transition print:border-solid print:border-black"
                   aria-label="اسم الزوج"
                 />
               </div>
               <div className="flex gap-2 items-baseline">
                 <span className="font-semibold">التوقيع:</span>
-                <span className="flex-grow border-b-2 border-gray-400 border-dotted h-6"></span>
+                <span className="flex-grow border-b-2 border-gray-400 border-dotted h-6 print:border-solid print:border-black"></span>
               </div>
             </div>
             
@@ -278,13 +280,13 @@ const App: React.FC = () => {
                     type="text" 
                     value={witness1Name} 
                     onChange={e => setWitness1Name(e.target.value)} 
-                    className="flex-grow p-1 bg-transparent font-bold border-b-2 border-gray-400 border-dotted focus:outline-none focus:border-solid focus:border-blue-500 transition print:bg-transparent"
+                    className="flex-grow p-1 bg-transparent font-bold border-b-2 border-gray-400 border-dotted focus:outline-none focus:border-solid focus:border-blue-500 transition print:border-solid print:border-black"
                     aria-label="اسم الشاهد الأول"
                   />
                 </div>
                 <div className="flex gap-2 items-baseline">
                   <span className="font-semibold">التوقيع:</span>
-                  <span className="flex-grow border-b-2 border-gray-400 border-dotted h-6"></span>
+                  <span className="flex-grow border-b-2 border-gray-400 border-dotted h-6 print:border-solid print:border-black"></span>
                 </div>
               </div>
               <div>
@@ -294,13 +296,13 @@ const App: React.FC = () => {
                     type="text" 
                     value={witness2Name} 
                     onChange={e => setWitness2Name(e.target.value)} 
-                    className="flex-grow p-1 bg-transparent font-bold border-b-2 border-gray-400 border-dotted focus:outline-none focus:border-solid focus:border-blue-500 transition print:bg-transparent"
+                    className="flex-grow p-1 bg-transparent font-bold border-b-2 border-gray-400 border-dotted focus:outline-none focus:border-solid focus:border-blue-500 transition print:border-solid print:border-black"
                     aria-label="اسم الشاهد الثاني"
                   />
                 </div>
                 <div className="flex gap-2 items-baseline">
                   <span className="font-semibold">التوقيع:</span>
-                  <span className="flex-grow border-b-2 border-gray-400 border-dotted h-6"></span>
+                  <span className="flex-grow border-b-2 border-gray-400 border-dotted h-6 print:border-solid print:border-black"></span>
                 </div>
               </div>
             </div>
@@ -350,3 +352,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+--- END OF FILE App.tsx ---
