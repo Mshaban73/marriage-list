@@ -1,5 +1,3 @@
---- START OF FILE App.tsx ---
-
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Item } from './types';
 import { tafqeet } from './tafqeetUtil';
@@ -352,4 +350,3 @@ const App: React.FC = () => {
 };
 
 export default App;
---- END OF FILE App.tsx ---
