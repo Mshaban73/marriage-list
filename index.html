@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
@@ -14,6 +15,42 @@
     <style>
       body {
         font-family: 'Cairo', sans-serif;
+      }
+      @media print {
+        @page {
+          margin: 12mm;
+          size: A4 portrait;
+        }
+        body {
+          background-color: white !important;
+          padding: 0 !important;
+        }
+        .container {
+          max-width: 100% !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .bg-white {
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+        }
+        /* Make sure the signatures are always side-by-side in 2 columns */
+        .signatures-section {
+          display: grid !important;
+          grid-template-columns: 1fr 1fr !important;
+          column-gap: 2.5rem !important;
+          row-gap: 1.5rem !important;
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+        }
+        .print\:hidden {
+          display: none !important;
+        }
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
       }
     </style>
   <script type="importmap">
